@@ -66,3 +66,14 @@ def h_principal():
     }
 
     return headers
+
+@pytest.fixture
+def h_clerk():
+    headers = {
+        'X-Principal': json.dumps({
+            'clerk_id': 1,
+            'user_id': 6
+        })
+    }
+
+    return headers

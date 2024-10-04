@@ -86,3 +86,20 @@ def test_assignment_resubmit_error(client, h_student_1):
     assert response.status_code == 400
     assert error_response['error'] == 'FyleError'
     assert error_response["message"] == 'only a draft assignment can be submitted'
+
+
+def test_post_edit_assignment_student_1(client, h_student_1):
+#    """
+#     failure case: Only draft assignment can be edited
+#     """
+    content = 'ABCD TESTPOST 4'
+
+    response = client.post(
+        '/student/assignments',
+        headers=h_student_1,
+        json={
+            'id': 2,
+            'content': content
+        })
+
+    assert response.status_code == 400
